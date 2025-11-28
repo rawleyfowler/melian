@@ -1,0 +1,22 @@
+{
+  "name": "melian-client",
+  "version": "0.1.0",
+  "description": "Node.js client for the Melian cache server",
+  "type": "module",
+  "main": "dist/index.js",
+  "exports": {
+    ".": "./src/index.js"
+  },
+  "scripts": {
+    "test": "node --experimental-vm-modules ./node_modules/.bin/jest"
+  },
+  "keywords": [
+    "melian",
+    "cache",
+    "client"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "jest": "^29.0.0"
+  }
+}

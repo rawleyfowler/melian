@@ -1,0 +1,3 @@
+-I..
+-I/opt/homebrew/opt/mysql-client/include/mysql
+-std=c11
