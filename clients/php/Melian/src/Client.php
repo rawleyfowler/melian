@@ -17,7 +17,7 @@ use RuntimeException;
  *     // Optional: 'schema_spec' => 'table1#0|60|id#0:int'
  * ]);
  * [$tableId, $indexId] = $client->resolveIndex('table2', 'hostname');
- * $row = $client->fetchJson($tableId, $indexId, 'host-00042');
+ * $row = $client->fetchByString($tableId, $indexId, 'host-00042');
  */
 final class Client
 {
@@ -81,7 +81,7 @@ final class Client
      *
      * @return array<string, mixed>|null
      */
-    public function fetchJson(int $tableId, int $indexId, string $key): ?array
+    public function fetchByString(int $tableId, int $indexId, string $key): ?array
     {
         $payload = $this->fetchRaw($tableId, $indexId, $key);
         if ($payload === '') {
@@ -100,10 +100,10 @@ final class Client
      *
      * @return array<string, mixed>|null
      */
-    public function fetchJsonById(int $tableId, int $indexId, int $id): ?array
+    public function fetchByInt(int $tableId, int $indexId, int $id): ?array
     {
         $key = pack('V', $id);
-        return $this->fetchJson($tableId, $indexId, $key);
+        return $this->fetchByString($tableId, $indexId, $key);
     }
 
     /**

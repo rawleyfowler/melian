@@ -26,11 +26,11 @@ client = MelianClient(dsn="unix:///tmp/melian.sock")
 table_id, index_id = client.resolve_index("table2", "hostname")
 
 # Fetch JSON row by hostname
-row = client.fetch_json(table_id, index_id, b"host-00042")
+row = client.fetch_by_string(table_id, index_id, b"host-00042")
 print(row)
 
 # Fetch by numeric ID (encoded as little-endian uint32)
-row = client.fetch_json_by_id(table_id, index_id=0, record_id=42)
+row = client.fetch_by_int(table_id, index_id=0, record_id=42)
 print(row)
 
 client.close()

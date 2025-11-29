@@ -58,7 +58,7 @@ class MelianClient:
             raise ValueError("table_id and index_id must be between 0 and 255")
         return self._send(self.ACTION_FETCH, table_id, index_id, key)
 
-    def fetch_json(self, table_id: int, index_id: int, key: bytes) -> Optional[Dict[str, Any]]:
+    def fetch_by_string(self, table_id: int, index_id: int, key: bytes) -> Optional[Dict[str, Any]]:
         payload = self.fetch_raw(table_id, index_id, key)
         if not payload:
             return None
@@ -67,9 +67,9 @@ class MelianClient:
             raise RuntimeError("Expected JSON object from server")
         return decoded
 
-    def fetch_json_by_id(self, table_id: int, index_id: int, record_id: int) -> Optional[Dict[str, Any]]:
+    def fetch_by_int(self, table_id: int, index_id: int, record_id: int) -> Optional[Dict[str, Any]]:
         key = struct.pack("<I", record_id)
-        return self.fetch_json(table_id, index_id, key)
+        return self.fetch_by_string(table_id, index_id, key)
 
     def resolve_index(self, table_name: str, column: str) -> Tuple[int, int]:
         for table in self._schema.get("tables", []):

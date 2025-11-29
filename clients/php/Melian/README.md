@@ -13,5 +13,5 @@ Some PHP sample code:
 ```php
 $client = new Melian\Client(['dsn' => 'unix:///tmp/melian.sock']);
 [$tableId, $indexId] = $client->resolveIndex('table2', 'id');
-$row = $client->fetchJsonById($tableId, $indexId, 42);
+$row = $client->fetchByInt($tableId, $indexId, 42);
 ```

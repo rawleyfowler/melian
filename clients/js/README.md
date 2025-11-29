@@ -18,7 +18,7 @@ import { MelianClient } from './src/MelianClient.js';
 const client = await MelianClient.create({ dsn: 'unix:///tmp/melian.sock' });
 
 const { tableId, indexId } = client.resolveIndex('table2', 'hostname');
-const row = await client.fetchJson(tableId, indexId, Buffer.from('host-00042'));
+const row = await client.fetchByString(tableId, indexId, Buffer.from('host-00042'));
 console.log(row);
 
 await client.close();

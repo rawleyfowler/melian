@@ -43,7 +43,7 @@ final class ClientTest extends TestCase
     {
         [$tableId, $indexId] = $this->resolveIndex('table1', 'id');
         $recordId = 5;
-        $payload = $this->client->fetchJsonById($tableId, $indexId, $recordId);
+        $payload = $this->client->fetchByInt($tableId, $indexId, $recordId);
 
         $this->assertIsArray($payload);
         $this->assertSame($recordId, $payload['id']);
@@ -68,10 +68,10 @@ final class ClientTest extends TestCase
             'status' => 'maintenance',
         ];
 
-        $byId = $this->client->fetchJsonById($tableId, $idIndex, $recordId);
+        $byId = $this->client->fetchByInt($tableId, $idIndex, $recordId);
         $this->assertSame($expected, $byId);
 
-        $byHostname = $this->client->fetchJson($tableId, $hostIndex, $hostname);
+        $byHostname = $this->client->fetchByString($tableId, $hostIndex, $hostname);
         $this->assertSame($expected, $byHostname);
     }
 

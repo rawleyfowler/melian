@@ -31,7 +31,7 @@ test('loads schema from describe action', () => {
 
 test('fetches table1 by id', async () => {
   const { tableId, indexId } = client.resolveIndex('table1', 'id');
-  const payload = await client.fetchJsonById(tableId, indexId, 5);
+  const payload = await client.fetchByInt(tableId, indexId, 5);
   expect(payload).not.toBeNull();
   expect(payload.id).toBe(5);
   expect(payload.name).toBe('item_5');
@@ -51,10 +51,10 @@ test('fetches table2 by id and hostname', async () => {
     status: 'maintenance',
   };
 
-  const byId = await client.fetchJsonById(tableId, indexId, 2);
+  const byId = await client.fetchByInt(tableId, indexId, 2);
   expect(byId).toEqual(expected);
 
-  const byHost = await client.fetchJson(tableId, hostIndex, Buffer.from('host-00002', 'utf8'));
+  const byHost = await client.fetchByString(tableId, hostIndex, Buffer.from('host-00002', 'utf8'));
   expect(byHost).toEqual(expected);
 });
 

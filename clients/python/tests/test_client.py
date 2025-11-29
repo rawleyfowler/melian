@@ -32,7 +32,7 @@ def test_connection_loads_schema(client: MelianClient) -> None:
 
 def test_table1_fetch_by_id(client: MelianClient) -> None:
     table_id, index_id = resolve_index(client, "table1", "id")
-    payload = client.fetch_json_by_id(table_id, index_id, 5)
+    payload = client.fetch_by_int(table_id, index_id, 5)
     assert payload is not None
     assert payload["id"] == 5
     assert payload["name"] == "item_5"
@@ -51,10 +51,10 @@ def test_table2_fetch_by_id_and_hostname(client: MelianClient) -> None:
         "status": "maintenance",
     }
 
-    by_id = client.fetch_json_by_id(table_id, id_index, 2)
+    by_id = client.fetch_by_int(table_id, id_index, 2)
     assert by_id == expected
 
-    by_host = client.fetch_json(table_id, host_index, b"host-00002")
+    by_host = client.fetch_by_string(table_id, host_index, b"host-00002")
     assert by_host == expected
 
 def test_schema_spec_matches_live_description() -> None:

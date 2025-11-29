@@ -65,7 +65,7 @@ export class MelianClient {
     return this.#send(ACTION_FETCH, tableId, indexId, keyBuffer);
   }
 
-  async fetchJson(tableId, indexId, keyBuffer) {
+  async fetchByString(tableId, indexId, keyBuffer) {
     const payload = await this.fetchRaw(tableId, indexId, keyBuffer);
     if (!payload.length) {
       return null;
@@ -73,10 +73,10 @@ export class MelianClient {
     return JSON.parse(payload.toString('utf8'));
   }
 
-  async fetchJsonById(tableId, indexId, id) {
+  async fetchByInt(tableId, indexId, id) {
     const key = Buffer.allocUnsafe(4);
     key.writeUInt32LE(id, 0);
-    return this.fetchJson(tableId, indexId, key);
+    return this.fetchByString(tableId, indexId, key);
   }
 
   resolveIndex(tableName, column) {
