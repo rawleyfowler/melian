@@ -132,10 +132,10 @@ void status_json(Status* status, Config* config, Data* data) {
         l = json_obj_beg(N++, "mysql", p, c, l);
         {
           unsigned N = 0;
-          l = json_string(N++, "host", config->mysql.host, p, c, l);
-          l = json_integer(N++, "port", config->mysql.port, p, c, l);
-          l = json_string(N++, "database", config->mysql.database, p, c, l);
-          l = json_string(N++, "user", config->mysql.user, p, c, l);
+          l = json_string(N++, "host", config->db.host, p, c, l);
+          l = json_integer(N++, "port", config->db.port, p, c, l);
+          l = json_string(N++, "database", config->db.database, p, c, l);
+          l = json_string(N++, "user", config->db.user, p, c, l);
         }
         l = json_obj_end(p, c, l);
 

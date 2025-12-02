@@ -22,11 +22,12 @@ Config* config_build(void) {
       break;
     }
 
-    config->mysql.host = get_config_string("MELIAN_MYSQL_HOST", MELIAN_DEFAULT_MYSQL_HOST);
-    config->mysql.port = get_config_number("MELIAN_MYSQL_PORT", MELIAN_DEFAULT_MYSQL_PORT);
-    config->mysql.database = get_config_string("MELIAN_MYSQL_DATABASE", MELIAN_DEFAULT_MYSQL_DATABASE);
-    config->mysql.user = get_config_string("MELIAN_MYSQL_USER", MELIAN_DEFAULT_MYSQL_USER);
-    config->mysql.password = get_config_string("MELIAN_MYSQL_PASSWORD", MELIAN_DEFAULT_MYSQL_PASSWORD);
+    config->db.driver = CONFIG_DB_DRIVER_MYSQL;
+    config->db.host = get_config_string("MELIAN_MYSQL_HOST", MELIAN_DEFAULT_MYSQL_HOST);
+    config->db.port = get_config_number("MELIAN_MYSQL_PORT", MELIAN_DEFAULT_MYSQL_PORT);
+    config->db.database = get_config_string("MELIAN_MYSQL_DATABASE", MELIAN_DEFAULT_MYSQL_DATABASE);
+    config->db.user = get_config_string("MELIAN_MYSQL_USER", MELIAN_DEFAULT_MYSQL_USER);
+    config->db.password = get_config_string("MELIAN_MYSQL_PASSWORD", MELIAN_DEFAULT_MYSQL_PASSWORD);
 
     config->socket.host = get_config_string("MELIAN_SOCKET_HOST", MELIAN_DEFAULT_SOCKET_HOST);
     config->socket.port = get_config_number("MELIAN_SOCKET_PORT", MELIAN_DEFAULT_SOCKET_PORT);
