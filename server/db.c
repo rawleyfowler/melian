@@ -54,7 +54,7 @@ void db_connect(DB* db) {
       break;
     }
 
-    ConfigMySQL* cfg = &db->config->mysql;
+    ConfigDb* cfg = &db->config->db;
     MYSQL* conn = mysql_real_connect((MYSQL*) db->conn, cfg->host, cfg->user, cfg->password, cfg->database, cfg->port, NULL, 0);
     if (!conn || conn != (MYSQL*)db->conn) {
       LOG_WARN("Could not connect to MySQL server at %s:%u as user %s", cfg->host, cfg->port, cfg->user);
@@ -70,7 +70,7 @@ void db_connect(DB* db) {
 void db_disconnect(DB* db) {
   if (!db) return;
   if (!db->conn) return;
-  ConfigMySQL* cfg = &db->config->mysql;
+  ConfigDb* cfg = &db->config->db;
   mysql_close((MYSQL*) db->conn);
   db->conn = 0;
   LOG_INFO("Disconnected from MySQL server at %s:%u", cfg->host, cfg->port);

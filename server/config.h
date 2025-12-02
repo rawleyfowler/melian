@@ -3,13 +3,19 @@
 // A Config stores the configuration for the system.
 // The default values can be modified by using environment variables.
 
-typedef struct ConfigMySQL {
+typedef enum ConfigDbDriver {
+  CONFIG_DB_DRIVER_MYSQL = 0,
+} ConfigDbDriver;
+
+typedef struct ConfigDb {
+  ConfigDbDriver driver;
   const char* host;
   unsigned port;
   const char* database;
   const char* user;
   const char* password;
-} ConfigMySQL;
+  const char* sqlite_filename;
+} ConfigDb;
 
 typedef struct ConfigSocket {
   const char* host;
@@ -53,7 +59,7 @@ typedef struct ConfigServer {
 } ConfigServer;
 
 typedef struct Config {
-  ConfigMySQL mysql;
+  ConfigDb db;
   ConfigSocket socket;
   ConfigTable table;
   ConfigServer server;
