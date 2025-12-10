@@ -22,7 +22,7 @@ C:  10000 reqs,  10000 good,   0 bad,   68 ms →  145516 req/s,   6.87210 ±  0
 * Data model: Full- or partial-table snapshots, but not individual keys.
 * Consistency: Always serves complete, coherent snapshots - no half-updated data.
 * Dual-key indexing: look up entries by numeric or string key.
-* Clients in C, Node.js, Perl, PHP, and Python.
+* Clients in [C](https://github.com/xsawyerx/melian/tree/main/clients/c), [Node.js](https://github.com/xsawyerx/melian/tree/main/clients/js), [Perl](https://metacpan.org/pod/Melian), [PHP](https://github.com/xsawyerx/melian/tree/main/clients/php/Melian), and [Python](https://github.com/xsawyerx/melian/tree/main/clients/python).
 * Runtime performance statistics: query table size, min/max ID, and memory usage.
 
 ## Why
