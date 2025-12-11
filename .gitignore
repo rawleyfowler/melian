@@ -3,10 +3,8 @@
 clients/c/melian-client
 server/melian-server
 Makefile
-Makefile.in
 /aclocal.m4
 /autom4te.cache/
-/build-aux/
 /config.log
 /config.status
 /depcomp
