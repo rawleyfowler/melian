@@ -4,3 +4,9 @@
 [submodule "clients/rakudo"]
 	path = clients/rakudo
 	url = git@github.com:xsawyerx/melian-raku
+[submodule "clients/python"]
+	path = clients/python
+	url = git@github.com:xsawyerx/melian-python.git
+[submodule "clients/nodejs"]
+	path = clients/nodejs
+	url = git@github.com:xsawyerx/melian-nodejs.git
