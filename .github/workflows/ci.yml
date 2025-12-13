@@ -5,7 +5,7 @@ on:
   pull_request:
 
 jobs:
-  sqlite-perl:
+  Malian CI:
     runs-on: ubuntu-latest
     env:
       MELIAN_TABLE_TABLES: 'table1#0|60|id#0:int,table2#1|60|id#0:int;hostname#1:string'
@@ -24,7 +24,7 @@ jobs:
         with:
           node-version: '20'
           cache: 'npm'
-          cache-dependency-path: clients/js/package-lock.json
+          cache-dependency-path: clients/nodejs/package-lock.json
 
       - name: Install dependencies
         run: |
@@ -79,7 +79,7 @@ jobs:
           python3 -m pip install -r requirements.txt
 
       - name: Install Node.js dependencies
-        working-directory: clients/js
+        working-directory: clients/nodejs
         run: npm ci
 
       - name: Install PHP dependencies
@@ -115,7 +115,7 @@ jobs:
           run_client_suite "Perl" bash -c 'set -e; cd clients/perl; eval $(perl -I ~/perl5/lib/perl5/ -Mlocal::lib); prove -lr t/'
           run_client_suite "Python" bash -c 'set -e; cd clients/python; python3 -m pytest -q'
           run_client_suite "PHP" bash -c 'set -e; cd clients/php/Melian; ./vendor/bin/phpunit'
-          run_client_suite "Node.js" bash -c 'set -e; cd clients/js; npm test'
+          run_client_suite "Node.js" bash -c 'set -e; cd clients/nodejs; npm test'
           echo "::group::Benchmarks"
           echo "===== BENCHMARKS ====="
           echo "--- query table 1 ---"
