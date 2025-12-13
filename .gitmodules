@@ -10,3 +10,6 @@
 [submodule "clients/nodejs"]
 	path = clients/nodejs
 	url = git@github.com:xsawyerx/melian-nodejs.git
+[submodule "clients/php"]
+	path = clients/php
+	url = git@github.com:xsawyerx/melian-php.git
