@@ -5,7 +5,7 @@ on:
   pull_request:
 
 jobs:
-  Malian CI:
+  Malian:
     runs-on: ubuntu-latest
     env:
       MELIAN_TABLE_TABLES: 'table1#0|60|id#0:int,table2#1|60|id#0:int;hostname#1:string'
