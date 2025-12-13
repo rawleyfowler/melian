@@ -83,7 +83,7 @@ jobs:
         run: npm ci
 
       - name: Install PHP dependencies
-        working-directory: clients/php/Melian
+        working-directory: clients/php
         run: composer install --no-interaction --no-progress --prefer-dist
 
       - name: Prepare SQLite database
@@ -114,7 +114,7 @@ jobs:
           }
           run_client_suite "Perl" bash -c 'set -e; cd clients/perl; eval $(perl -I ~/perl5/lib/perl5/ -Mlocal::lib); prove -lr t/'
           run_client_suite "Python" bash -c 'set -e; cd clients/python; python3 -m pytest -q'
-          run_client_suite "PHP" bash -c 'set -e; cd clients/php/Melian; ./vendor/bin/phpunit'
+          run_client_suite "PHP" bash -c 'set -e; cd clients/php; ./vendor/bin/phpunit'
           run_client_suite "Node.js" bash -c 'set -e; cd clients/nodejs; npm test'
           echo "::group::Benchmarks"
           echo "===== BENCHMARKS ====="
